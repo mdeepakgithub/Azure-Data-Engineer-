@@ -1,5 +1,4 @@
-Below is your **Project 1 documentation written in the same structure and style** as the example you provided.
-You can paste it **directly into GitHub `README.md`**. The sections, flow, code blocks, and diagrams follow the **same pattern**.
+
 
 ---
 
