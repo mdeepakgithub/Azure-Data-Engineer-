@@ -2,7 +2,7 @@
 
 ---
 
-# Cloud Data Pipeline Development for Sales Analytics
+# Cloud Data Pipeline Development 
 
 ## Project Overview
 
