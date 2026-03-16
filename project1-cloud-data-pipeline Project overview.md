@@ -1,4 +1,31 @@
+# Cloud Data Pipeline Development
 
+## Project Overview
+(Your project overview text)
+
+## Data Sources
+(Your data sources explanation)
+
+## Azure Data Factory
+(ADF explanation)
+
+## Data Lake Architecture
+(Bronze Silver Gold explanation)
+
+## Azure Databricks Workflow
+(Databricks transformation explanation)
+
+## Synapse Analytics
+(Synapse explanation)
+
+## Power BI Dashboards
+(Power BI explanation)
+
+## Architecture Flow
+(Mermaid diagram)
+
+## PySpark Code
+(Your PySpark code blocks)
 
 ---
 
