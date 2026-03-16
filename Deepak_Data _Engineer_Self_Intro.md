@@ -9,6 +9,8 @@ I closely work on data integration, transformation, and loading processes to mov
 I used to focus on data quality checks, performance optimization, and ensuring that the data is accurate, reliable, and ready for analytics or not. So yeah, this is a basic/short intro about myself
 
 Some of my key projects include:
+
+
 •	A Cloud Data Pipeline Project, where I unified data from multiple sources into ADLS and optimized performance using PySpark and Synapse.
 
 •	A Retail Customer Analytics Platform built on Microsoft Fabric, integrating batch and streaming data for real-time customer insights.
