@@ -1,6 +1,6 @@
 ## Project Explanation 1 – Cloud Data Pipeline Development (Final Version)
 
-In my project titled “Cloud Data Pipeline Development”, I designed and implemented a complete end-to-end data engineering solution on Microsoft Azure to process large volumes of sales, customer, and product data. 
+In my project titled “Cloud Data Pipeline Development”, I designed and implemented a complete end-to-end data engineering solution on Microsoft Azure to process large volumes of orders, customer, and product data. 
 
 The objective was to build a scalable and automated data pipeline that could handle both batch and real-time (streaming) data efficiently. 
 
