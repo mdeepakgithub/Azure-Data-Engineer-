@@ -2,278 +2,330 @@
 
 ---
 
-## 1. What is Big Data?
+## 1. What is Big Data
 
-Big Data refers to extremely large, fast-growing, and complex datasets that traditional databases cannot process efficiently.
+**Answer:**  
+Big Data refers to extremely large, fast-growing, and complex datasets that traditional databases and tools cannot store, process, or analyze efficiently.
 
-### Key characteristics  5 Vs:
-- **Volume** – Huge amount of data
-- **Velocity** – High speed of data generation
-- **Variety** – Different types (structured, unstructured)
-- **Veracity** – Data quality
-- **Value** – Business insights
+### Key characteristics (5 Vs):
+
+- **Volume**: Massive amounts of data (terabytes to petabytes)  
+- **Velocity**: Data generated and processed at high speed (real-time or near real-time)  
+- **Variety**: Multiple data types (structured, semi-structured, unstructured)  
+- **Veracity**: Data quality and reliability  
+- **Value**: Business insights derived from the data  
 
 ---
 
 ## 2. Difference Between Hadoop and Spark
 
+Hadoop and Spark are both open-source big data frameworks, but they differ mainly in processing.
+
+### Hadoop: Disk-Based Batch Processing
+
+- Uses MapReduce
+- Reads/writes data to disk (HDFS)
+
+**Flow:**
+1. Data read from HDFS  
+2. Map output written to disk  
+3. Reduce reads again from disk  
+4. Output written to HDFS  
+
+**Impact:**
+- Heavy disk I/O  
+- Slower execution  
+- Best for batch jobs  
+- Not efficient for ML  
+
+---
+
+### Spark: In-Memory Computation
+
+- Uses RAM for processing  
+- Stores intermediate data in memory  
+
+**Flow:**
+1. Load data once  
+2. Process in memory  
+3. Reuse data  
+4. Write only final output  
+
+**Impact:**
+- Faster processing  
+- Minimal disk I/O  
+- Ideal for real-time & ML  
+
+---
+
+### Comparison Table
+
 | Aspect | Hadoop | Spark |
 |--------|--------|-------|
+| Core purpose | Storage + batch | Fast processing |
 | Processing | Disk-based | In-memory |
-| Speed | Slower | Faster |
-| Use Case | Batch processing | Batch + Real-time |
-| Ease of Use | Complex | Easy APIs |
+| Speed | Slow | Fast |
+| Data processing | Batch | Batch + Streaming |
+| Ease | Complex | Easy APIs |
+| Fault tolerance | HDFS replication | RDD lineage |
+| Use cases | Batch jobs | Real-time, ML |
 
-### Summary:
-- Hadoop → Storage + Batch  
-- Spark → Fast processing + Real-time  
+**Summary:**
+- Hadoop → Storage + batch  
+- Spark → Fast analytics  
 
 ---
 
 ## 3. MapReduce vs Spark
 
-**MapReduce**
-- Disk-based
-- Slow
-- Batch only
+**MapReduce:**
+- Distributed processing (Map + Reduce)  
+- Disk-based → slow  
 
-**Spark Advantages**
-- In-memory processing
-- Faster
-- Supports ML, Streaming, SQL
+**Spark Advantages:**
+- In-memory processing  
+- Faster  
+- Supports streaming, SQL, ML  
+- Easy APIs  
 
-👉 Spark is faster and more flexible than MapReduce.
+👉 Spark is faster and more flexible.
 
 ---
 
 ## 4. Role of Data Engineer Using PySpark
 
-- Data ingestion (DB, API, Files)
-- Data cleaning & transformation
-- ETL/ELT pipelines
-- Performance tuning
-- Batch & streaming processing
+- Data ingestion (DB, APIs, files)  
+- Data cleaning & transformation  
+- ETL/ELT pipelines  
+- Performance tuning  
+- Batch & streaming  
+- Store data in lakes/warehouses  
 
-👉 Focus: Scalable data processing
+👉 Focus: Scalable pipelines
 
 ---
 
 ## 5. Spark Architecture
 
 ### Components:
-- **Driver** → Controls execution
-- **Cluster Manager** → Resource allocation
-- **Executors** → Run tasks
-- **Worker Nodes** → Perform processing
+- **Driver** → Main program  
+- **Cluster Manager** → Resource manager  
+- **Executors** → Execute tasks  
+- **Worker Nodes** → Run processing  
 
 ### Flow:
-Driver → Cluster Manager → Executors → Process → Output
+Driver → Cluster Manager → Executors → Process → Output  
 
 ### Advantages:
-- Parallel processing
-- Fault tolerance
-- High speed
+- Parallelism  
+- Fault tolerance  
+- Flexibility  
+- Speed  
 
 ---
 
 ## 6. How Spark Executes Code
 
-1. Driver starts program  
-2. Creates DAG  
+1. Driver starts  
+2. DAG created  
 3. Lazy evaluation  
 4. Split into stages  
 5. Split into tasks  
 6. Run on executors  
 7. Return results  
 
-👉 Spark executes using DAG → Stages → Tasks
+👉 DAG → Stages → Tasks  
 
 ---
 
-## 7. Client Mode vs Cluster Mode
+### Deploy Modes
 
-| Mode | Description |
-|------|------------|
-| Client Mode | Driver runs on local machine |
-| Cluster Mode | Driver runs inside cluster |
+**Client Mode**
+- Driver runs locally  
+- Less reliable  
 
-👉 Only driver location changes
+**Cluster Mode**
+- Driver runs in cluster  
+- More reliable  
 
----
-
-## 8. Current Node vs Edge Node
-
-- **Current Node** → Where you work  
-- **Edge Node** → Gateway to cluster  
-
-👉 Edge node is entry point
+👉 Only driver location changes  
 
 ---
 
-## 9. Why DataFrames over RDD?
+## 7. Current Node vs Edge Node
+
+**Current Node**
+- Where you work  
+
+**Edge Node**
+- Gateway to cluster  
+
+👉 Edge node is entry point  
+
+---
+
+## 8. Why DataFrames over RDD
 
 ### Advantages:
-- Faster (Catalyst Optimizer)
-- Less code
-- SQL support
-- Automatic optimization
+- Faster (Catalyst Optimizer)  
+- Less code  
+- SQL support  
+- Auto optimization  
 
 ### RDD Limitations:
-- No optimization
-- More code
-- Slower
+- No optimization  
+- More code  
+- Slower  
 
-👉 DataFrames are preferred
+👉 DataFrames are preferred  
 
 ---
 
-## 10. Creating DataFrame
+## 9. DataFrame Creation
 
-### With RDD:
-- Manual schema
-- Less optimized
+### Using RDD:
+- Manual schema  
+- Less optimized  
 
 ### Without RDD:
-- Direct from source
-- Optimized
+- Direct from source  
+- Fully optimized  
 
-👉 Direct DF is better
-
----
-
-## 11. CSV Reading Best Practices
-
-- Header = true
-- Define schema
-- Correct delimiter
-- Handle nulls
-- Encoding (UTF-8)
-- Handle bad records
-- Performance tuning
-
-👉 Focus on data quality + performance
+👉 Direct DF is better  
 
 ---
 
-## 12. InferSchema vs Custom Schema
+## 10. CSV Reading Best Practices
 
-### InferSchema:
-- Auto-detect types
-- Slower
+- Header = true  
+- Define schema  
+- Validate data types  
+- Correct delimiter  
+- Handle nulls  
+- Handle corrupt records  
+- Encoding (UTF-8)  
+- Handle quotes  
+- Optimize performance  
 
-### Custom Schema:
-- Defined manually
-- Faster
-
-👉 Custom schema is recommended
-
----
-
-## 13. Why Nullable Not Auto Updated?
-
-- Data types can change
-- Nullable is a constraint
-
-👉 Spark won’t assume no nulls
+👉 Focus on data quality  
 
 ---
 
-## 14. Why Nullable = False?
+## 11. InferSchema vs Custom Schema
 
-- Enforces data integrity
-- Prevents null values
+**InferSchema**
+- Auto-detect  
+- Slower  
 
-👉 Ensures data quality
+**Custom Schema**
+- Manual  
+- Faster  
 
----
-
-## 15. Parquet vs ORC
-
-### Parquet Advantages:
-- Columnar storage
-- High compression
-- Faster queries
-- Spark optimized
-
-👉 Preferred in Spark
+👉 Use custom schema  
 
 ---
 
-## 16. Why Parquet Over ORC?
+## 12. Why Nullable Not Auto Updated
 
-- Better ecosystem support
-- Works across tools
-- Cloud friendly
+- DataTypes can change  
+- Nullable is a constraint  
 
-👉 More flexible
+👉 Spark won’t assume no nulls  
 
 ---
 
-## 17. GROUP BY vs PARTITION BY
+## 13. Why nullable = false
+
+- Enforces data integrity  
+- Prevents null values  
+
+👉 Ensures data quality  
+
+---
+
+## 14. Parquet vs ORC
+
+**Parquet Advantages:**
+- Columnar format  
+- High compression  
+- Faster queries  
+- Spark optimized  
+
+👉 Preferred in Spark  
+
+---
+
+## 15. Why Parquet Over ORC
+
+- Better ecosystem  
+- Works across tools  
+- Cloud friendly  
+
+👉 More flexible  
+
+---
+
+## 16. GROUP BY vs PARTITION BY
 
 | Feature | GROUP BY | PARTITION BY |
 |--------|---------|-------------|
 | Rows | Reduced | Not reduced |
-| Use | Aggregation | Window functions |
+| Use | Aggregation | Window |
 
-👉 GROUP BY aggregates, PARTITION BY does not
+👉 GROUP BY aggregates  
 
 ---
 
-## 18. Window Functions
+## 17. Window Functions
 
 - OVER() → Mandatory  
 - PARTITION BY → Optional  
 - ORDER BY → Required for ranking  
 
-👉 ORDER BY needed for RANK()
+👉 ORDER BY needed for RANK  
 
 ---
 
-## 19. PartitionBy vs GroupBy (Concept)
+## 18. PartitionBy vs GroupBy
 
-- GROUP BY → Aggregates data  
+- GROUP BY → Aggregates  
 - PARTITION BY → Keeps rows  
 
-👉 Window functions need PARTITION BY
-
 ---
 
-## 20. Union vs Union All
+## 19. UNION vs UNION ALL
 
 - UNION → Removes duplicates  
 - UNION ALL → Keeps duplicates  
 
-👉 UNION ALL is faster
+👉 UNION ALL is faster  
 
 ---
 
-## 21. select vs selectExpr
+## 20. select vs selectExpr
 
 - select → Column-based  
 - selectExpr → SQL expressions  
 
-👉 selectExpr is flexible
-
 ---
 
-## 22. Flatten vs Explode
+## 21. Flatten vs Explode
 
 - Flatten → Removes nesting  
 - Explode → Expands arrays  
 
-👉 Explode increases rows
+👉 Explode increases rows  
 
 ---
 
-## 23. withColumn vs withColumnRenamed
+## 22. withColumn vs withColumnRenamed
 
-- withColumn → Add/modify column  
+- withColumn → Add/modify  
 - withColumnRenamed → Rename  
 
 ---
 
-## 24. Rank vs DenseRank
+## 23. Rank vs DenseRank
 
 | Rank | DenseRank |
 |------|----------|
@@ -281,71 +333,71 @@ Driver → Cluster Manager → Executors → Process → Output
 
 ---
 
-## 25. Narrow vs Wide Transformations
+## 24. Narrow vs Wide Transformations
 
-### Narrow:
-- map
-- filter
+**Narrow:**
+- map  
+- filter  
 
-### Wide:
-- groupBy
-- join
+**Wide:**
+- groupBy  
+- join  
 
-👉 Wide = shuffle
-
----
-
-## 26. Actions Examples
-
-- show()
-- collect()
-- count()
-- write()
+👉 Wide = shuffle  
 
 ---
 
-## 27. File Format for Storage
+## 25. Actions Examples
 
-👉 Parquet (most preferred)
+- show()  
+- collect()  
+- count()  
+- write()  
 
 ---
 
-## 28. Broadcast Join
+## 26. Storage Format
 
-- When one dataset is small  
+👉 Parquet (most preferred)  
+
+---
+
+## 27. Broadcast Join
+
+- Used when one dataset is small  
 - Improves performance  
 
 ---
 
-## 29. Logical vs Physical Plan
+## 28. Logical vs Physical Plan
 
 - Logical → What to do  
 - Physical → How to do  
 
 ---
 
-## 30. Catalyst Optimizer
+## 29. Catalyst Optimizer
 
 - Optimizes query execution  
 - Improves performance  
 
 ---
 
-## 31. AQE (Adaptive Query Execution)
+## 30. AQE (Adaptive Query Execution)
 
 - Adjusts plan at runtime  
 - Improves joins & partitions  
 
 ---
 
-## 32. Does Parquet Support ACID?
+## 31. Parquet ACID Support
 
-❌ No (Directly)  
+❌ Not directly  
 ✅ Supported via Delta Lake  
 
 ---
 
-## 33. Modes in Spark
+## 32. Modes in Spark
 
 - Append  
 - Overwrite  
@@ -354,28 +406,32 @@ Driver → Cluster Manager → Executors → Process → Output
 
 ---
 
-## 34. Repartition
+## 33. Repartition
 
 - Increase/decrease partitions  
 - Causes shuffle  
 
 ---
 
-## 35. Coalesce
+## 34. Coalesce
 
 - Reduce partitions only  
 - No shuffle  
 
-👉 Used for optimization
+---
+
+## 35. Repartition vs Coalesce
+
+- Repartition → Shuffle  
+- Coalesce → No shuffle  
+
+👉 Use coalesce for reducing files  
 
 ---
 
-## 36. Repartition vs Coalesce
+## 36.
 
-- Repartition → shuffle  
-- Coalesce → no shuffle  
-
-👉 Use coalesce for reducing files
+(To be added)
 
 ---
 
