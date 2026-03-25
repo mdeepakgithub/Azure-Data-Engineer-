@@ -6,7 +6,7 @@
 
 Big Data refers to extremely large, fast-growing, and complex datasets that traditional databases cannot process efficiently.
 
-### 5 Vs:
+### Key characteristics  5 Vs:
 - **Volume** – Huge amount of data
 - **Velocity** – High speed of data generation
 - **Variety** – Different types (structured, unstructured)
