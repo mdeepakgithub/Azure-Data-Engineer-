@@ -48,19 +48,42 @@ end
 
 %% ================= BRONZE =================
 subgraph Bronze_Layer
-    BZ["ADLS Bronze Raw Data Storage"]
+    BZ["ADLS Bronze Raw Data Storage  
+    (Medallion Bronze)  
+    - Raw ingestion (SQL/API/Blob)  
+    - No transformation  
+    - Store JSON/CSV/Parquet  
+    - Partition by date/source  
+    - Basic validation"]
 end
 
 %% ================= SILVER =================
 subgraph Silver_Layer
-    SL1["Databricks Silver Cleaning & Transform"]
-    SL2["ADLS Silver"]
+    SL1["Databricks Silver Cleaning & Transform  
+    (Medallion Silver)  
+    - Data cleaning (nulls, duplicates)  
+    - Schema enforcement  
+    - Data type casting  
+    - Joins across sources  
+    - Filtering invalid records  
+    - Standardization"]
+    SL2["ADLS Silver  
+    - Cleaned structured data  
+    - Ready for transformation"]
 end
 
 %% ================= GOLD =================
 subgraph Gold_Layer
-    GL1["Databricks Gold Business Logic"]
-    GL2["ADLS Gold"]
+    GL1["Databricks Gold Business Logic  
+    (Medallion Gold)  
+    - Aggregations (KPIs, metrics)  
+    - Business logic implementation  
+    - Fact & Dimension tables  
+    - Star schema modeling  
+    - Performance optimization"]
+    GL2["ADLS Gold  
+    - Business-ready data  
+    - Reporting layer"]
 end
 
 %% ================= DELTA =================
