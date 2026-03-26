@@ -95,6 +95,10 @@ end
 subgraph Synapse_Layer
     SYN["Azure Synapse External Tables, Load, Query"]
 end
+%% ================= SYNAPSE =================
+subgraph Synapse_Layer
+    SYN["Azure Synapse<br>Read ADLS Gold<br>External Tables<br>CTAS/COPY<br>SQL Transform<br>Fact & Dim<br>Index/Partition<br>Views<br>Power BI"]
+end
 
 %% ================= ANALYTICS =================
 subgraph Analytics
