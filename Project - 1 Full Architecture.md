@@ -1,13 +1,18 @@
+# Project 1: Cloud Data Pipeline Architecture
+
+## Architecture Diagram
+
+```mermaid
 flowchart TD
 
 %% ================= SOURCES =================
 subgraph Sources
-    A1["On-Prem SQL Server"]
-    A2["REST APIs"]
-    A3["Azure Blob Storage"]
+    A1["Azure Blob Storage"]
+    A2["On-Prem SQL Server"]
+    A3["REST APIs"]
 end
 
-%% ================= SQL FLOW =================
+%% ================= SQL SERVER FLOW =================
 subgraph SQL_Server_Flow
     S1["SHIR Setup"]
     S2["Linked Service (SQL Server)"]
@@ -16,7 +21,7 @@ subgraph SQL_Server_Flow
     Copy, Lookup, ForEach, SP, Metadata, If"]
 end
 
-%% ================= API FLOW =================
+%% ================= REST API FLOW =================
 subgraph REST_API_Flow
     R1["Linked Service (REST API)"]
     R2["Dataset (JSON)"]
@@ -35,42 +40,37 @@ subgraph Security_Layer
     SEC7["Monitoring"]
 end
 
-%% ================= ADF =================
+%% ================= ADF ETL =================
 subgraph ADF_ETL
     ETL["ADF Orchestration  
-    Extraction, Transform, Load, Control Flow"]
+    Extract, Transform, Load, Control Flow"]
 end
 
 %% ================= BRONZE =================
 subgraph Bronze_Layer
-    BZ["ADLS Bronze  
-    Raw Data Storage"]
+    BZ["ADLS Bronze Raw Data Storage"]
 end
 
 %% ================= SILVER =================
 subgraph Silver_Layer
-    SL1["Databricks Silver  
-    Cleaning & Transform"]
+    SL1["Databricks Silver Cleaning & Transform"]
     SL2["ADLS Silver"]
 end
 
 %% ================= GOLD =================
 subgraph Gold_Layer
-    GL1["Databricks Gold  
-    Business Logic"]
+    GL1["Databricks Gold Business Logic"]
     GL2["ADLS Gold"]
 end
 
 %% ================= DELTA =================
 subgraph Delta_Lake
-    DL["Delta Lake  
-    Partition, Z-Order, ACID"]
+    DL["Delta Lake Partition, Z-Order, ACID"]
 end
 
 %% ================= SYNAPSE =================
 subgraph Synapse_Layer
-    SYN["Azure Synapse  
-    External Tables, Load, Query"]
+    SYN["Azure Synapse External Tables, Load, Query"]
 end
 
 %% ================= ANALYTICS =================
@@ -84,9 +84,9 @@ subgraph DevOps
 end
 
 %% ================= FLOW =================
-A1 --> S1 --> S2 --> S3 --> S4
-A2 --> R1 --> R2 --> R3
-A3 --> ETL
+A2 --> S1 --> S2 --> S3 --> S4
+A3 --> R1 --> R2 --> R3
+A1 --> ETL
 
 S4 --> ETL
 R3 --> ETL
