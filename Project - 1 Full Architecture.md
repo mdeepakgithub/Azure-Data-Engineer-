@@ -42,9 +42,10 @@ end
 
 %% ================= ADF ETL =================
 subgraph ADF_ETL
-    ETL["ADF Orchestration  
-    Extract, Transform, Load, Control Flow"]
+    ETL["ADF Orchestration<br>Extract, Transform, Load, Control Flow<br>Batch Processing (Schedule Trigger)<br>Incremental Load (Watermark / CDC)"]
 end
+
+
 
 %% ================= BRONZE =================
 subgraph Bronze_Layer
