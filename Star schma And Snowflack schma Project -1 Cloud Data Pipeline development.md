@@ -1,3 +1,16 @@
+# Project 1 – Schema Diagrams
+
+This document shows the **Star Schema** and **Snowflake Schema** for the Gold Layer of the Cloud Data Pipeline project.  
+Both diagrams are rendered using Mermaid TD syntax and include color coding:
+
+- **Fact tables** → Blue  
+- **Dimension tables** → Green  
+
+---
+
+## 🌟 Star Schema
+
+```mermaid
 flowchart TD
 
 %% ================= STAR SCHEMA =================
