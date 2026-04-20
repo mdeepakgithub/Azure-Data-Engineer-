@@ -35,13 +35,8 @@ FS --> DP
 FS --> DD
 FS --> DR
 
-Keep classDef at the bottom of the block (but still inside the ```mermaid fenced block).
-
-Make sure the block is properly closed with triple backticks.
-
-Avoid stray characters (like <br> or HTML tags) inside Mermaid nodes — GitHub’s parser doesn’t support them.
-
-(``` classDef fact fill=#1f77b4,stroke=#000,color=#fff;```)
-(```classDef dim fill=#2ca02c,stroke=#000,color=#fff;```)
-
+...
+classDef fact fill=#1f77b4,stroke=#000,color=#fff;
+classDef dim fill=#2ca02c,stroke=#000,color=#fff;
+```
 
