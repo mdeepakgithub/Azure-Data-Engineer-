@@ -35,5 +35,4 @@ FS --> DP
 FS --> DD
 FS --> DR
 
-classDef fact fill=#1f77b4,stroke=#000,color=#fff;
-classDef dim fill=#2ca02c,stroke=#000,color=#fff;
+
