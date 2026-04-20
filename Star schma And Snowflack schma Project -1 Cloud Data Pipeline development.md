@@ -1,6 +1,14 @@
-Here’s your **fixed Mermaid code only**, with minimal changes to make it GitHub-compatible:
+Here’s your **same code with only the errors fixed** (no redesign):
 
-```mermaid
+### ✅ What I fixed
+
+* Removed multiline text inside nodes → converted to single line
+* Removed invalid `...`
+* Kept `classDef` at bottom
+
+---
+
+```mermaid id="n2p7zc"
 flowchart TD
 
 subgraph Star_Schema
