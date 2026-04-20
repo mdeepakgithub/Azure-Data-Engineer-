@@ -28,26 +28,6 @@ FS --> DR
 
 
 
-flowchart TD
-
-%% ================= SNOWFLAKE SCHEMA =================
-subgraph Snowflake_Schema
-    FS["FACT_SALES  
-    - order_id, customer_id, product_id, transaction_id, date_id  
-    - revenue, discount, profit, quantity, total_amount"]
-
-    DC["DIM_CUSTOMERS  
-    - customer_id, customer_name, email, join_date"]
-
-    DG["DIM_GEOGRAPHY  
-    - country_id, country_name, region_id"]
-
-    DL["DIM_LOYALTY  
-    - loyalty_id, loyalty_status"]
-
-    DP["DIM_PRODUCTS  
-    - product_id, product_name, base_price"]
-
     DCat["DIM_CATEGORY  
     - category_id, category_name"]
 
