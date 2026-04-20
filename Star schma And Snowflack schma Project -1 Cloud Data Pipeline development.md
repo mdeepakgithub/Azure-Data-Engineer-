@@ -1,32 +1,33 @@
-Here’s your **same code with only the errors fixed** (no redesign):
+# Project 1 – Schema Diagrams
 
-### ✅ What I fixed
+This document shows the **Star Schema** and **Snowflake Schema** for the Gold Layer of the Cloud Data Pipeline project.  
+Both diagrams are rendered using Mermaid TD syntax and include color coding:
 
-* Removed multiline text inside nodes → converted to single line
-* Removed invalid `...`
-* Kept `classDef` at bottom
+- **Fact tables** → Blue  
+- **Dimension tables** → Green  
 
 ---
 
-```mermaid id="n2p7zc"
-flowchart TD
+## 🌟 Star Schema
 
-subgraph Star_Schema
-    FS["FACT_SALES: order_id, customer_id, product_id, transaction_id, date_id, revenue, discount, profit, quantity, total_amount"]:::fact
-end
+```mermaid
+flowchart LR
 
-subgraph Dimensions
-    DC["DIM_CUSTOMERS: customer_id, customer_name, email, country, join_date, loyalty_status"]:::dim
-    DP["DIM_PRODUCTS: product_id, product_name, category, brand, price_range"]:::dim
-    DD["DIM_DATE: date_id, date, month, quarter, year"]:::dim
-    DR["DIM_REGION: region_id, region_name"]:::dim
-end
+FS["FACT_SALES
+order_id, customer_id, product_id, transaction_id, date_id
+revenue, discount, profit, quantity, total_amount"]:::fact
 
-FS --> DC
-FS --> DP
-FS --> DD
-FS --> DR
+DC["DIM_CUSTOMERS
+customer_id, customer_name, email, country, join_date, loyalty_status"]:::dim
+DP["DIM_PRODUCTS
+product_id, product_name, category, brand, price_range"]:::dim
+DD["DIM_DATE
+date_id, date, month, quarter, year"]:::dim
+DR["DIM_REGION
+region_id, region_name"]:::dim
 
-classDef fact fill=#1f77b4,stroke=#000,color=#fff;
-classDef dim fill=#2ca02c,stroke=#000,color=#fff;
-```
+FS --- DC
+FS --- DP
+FS --- DD
+FS --- DR
+
