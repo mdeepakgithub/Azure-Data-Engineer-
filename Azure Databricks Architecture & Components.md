@@ -26,6 +26,7 @@ Create notebooks
 Manage jobs
 Monitor pipelines
 UI for developers & data engineers
+
 🔹 Step 4: Clusters (Core Component 🔥)
 Types:
 All-purpose cluster (development)
