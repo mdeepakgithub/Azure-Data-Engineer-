@@ -2,7 +2,9 @@
 
 ## 📌 Overview
 Azure Databricks is a unified analytics platform built on Apache Spark, used for large-scale data processing, transformation, and analytics.
+
 🔄 Step-by-Step Architecture Explanation
+
 🔹 Step 1: Control Plane
 Managed by Databricks (Microsoft)
 Handles:
@@ -10,12 +12,14 @@ Workspace UI
 Job scheduling
 Cluster management
 No data stored here (only metadata & configs)
+
 🔹 Step 2: Data Plane
 Runs in your Azure subscription
 Contains:
 Clusters (compute)
 Data storage (ADLS / DBFS)
 Ensures data security
+
 🔹 Step 3: Workspace
 Central place to:
 Create notebooks
@@ -36,6 +40,7 @@ Handle distributed processing
 Supports:
 Auto-scaling
 Auto-termination
+
 🔹 Step 5: Notebooks
 Used to write code:
 PySpark
@@ -45,12 +50,14 @@ Perform:
 Data ingestion
 Transformation
 Aggregation
+
 🔹 Step 6: Storage Layer
 DBFS (Databricks File System)
 ADLS Gen2 (recommended)
 Data stored as:
 Parquet
 Delta format
+
 🔹 Step 7: Delta Lake (Important 🔥)
 Provides:
 ACID transactions
@@ -62,6 +69,7 @@ Run notebooks automatically
 Can be triggered by:
 Schedulers
 External tools (ADF)
+
 🔹 Step 9: End-to-End Flow
 Data stored in ADLS / DBFS
 Notebooks read data
