@@ -1,92 +1,32 @@
-# Star Schema – Cloud Data Pipeline
+## 🌟 Star Schema – Cloud Data Pipeline
 
-## 📌 Overview
-This star schema represents the Gold Layer of the data pipeline where transformed and curated data is stored for analytics and reporting.
+```mermaid
+flowchart LR
 
-- **Fact Table**: Stores measurable business metrics
-- **Dimension Tables**: Provide descriptive context
+%% ================= FACT TABLE =================
+FS["FACT_SALES
+order_id, customer_id, product_id, store_id, date_id
+quantity, sales_amount, discount, profit"]:::fact
 
----
+%% ================= DIMENSIONS =================
+DC["DIM_CUSTOMER
+customer_id, customer_name, email, phone, city, state, country"]:::dim
 
-## 🟦 Fact Table
+DP["DIM_PRODUCT
+product_id, product_name, category, sub_category, price"]:::dim
 
-### FACT_SALES
-| Column Name      | Description |
-|-----------------|------------|
-| order_id         | Unique order identifier |
-| customer_id      | Foreign key to DIM_CUSTOMER |
-| product_id       | Foreign key to DIM_PRODUCT |
-| date_id          | Foreign key to DIM_DATE |
-| store_id         | Foreign key to DIM_STORE |
-| quantity         | Number of items sold |
-| sales_amount     | Total sales value |
-| discount         | Discount applied |
-| profit           | Profit earned |
+DS["DIM_STORE
+store_id, store_name, location, region"]:::dim
 
----
+DD["DIM_DATE
+date_id, date, day, month, quarter, year"]:::dim
 
-## 🟩 Dimension Tables
+%% ================= RELATIONSHIPS =================
+FS --- DC
+FS --- DP
+FS --- DS
+FS --- DD
 
-### DIM_CUSTOMER
-| Column Name   | Description |
-|--------------|------------|
-| customer_id   | Primary key |
-| customer_name | Customer name |
-| email         | Email address |
-| phone         | Contact number |
-| city          | City |
-| state         | State |
-| country       | Country |
-
----
-
-### DIM_PRODUCT
-| Column Name   | Description |
-|--------------|------------|
-| product_id    | Primary key |
-| product_name  | Product name |
-| category      | Product category |
-| sub_category  | Sub category |
-| price         | Product price |
-
----
-
-### DIM_DATE
-| Column Name | Description |
-|------------|------------|
-| date_id     | Primary key |
-| date        | Full date |
-| day         | Day |
-| month       | Month |
-| quarter     | Quarter |
-| year        | Year |
-
----
-
-### DIM_STORE
-| Column Name | Description |
-|------------|------------|
-| store_id    | Primary key |
-| store_name  | Store name |
-| location    | Store location |
-| region      | Region |
-
----
-
-## 🔗 Relationships
-
-- FACT_SALES.customer_id → DIM_CUSTOMER.customer_id
-- FACT_SALES.product_id → DIM_PRODUCT.product_id
-- FACT_SALES.date_id → DIM_DATE.date_id
-- FACT_SALES.store_id → DIM_STORE.store_id
-
----
-
-## 🎯 Use Cases
-
-- Sales trend analysis
-- Customer behavior insights
-- Product performance tracking
-- Regional sales reporting
-
----
+%% ================= STYLES =================
+classDef fact fill:#1f77b4,stroke:#000,color:#fff;
+classDef dim fill:#2ca02c,stroke:#000,color:#fff;
